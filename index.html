@@ -222,6 +222,19 @@
       max-width: 620px;
     }
 
+    .pricing-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #fff3e0, #fffbf0);
+      border: 1px solid rgba(245, 185, 66, 0.3);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #d97706;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -701,6 +714,10 @@
           <p class="hero-copy">
             DossierDémarche vous aide à organiser vos démarches administratives, à comprendre les étapes à suivre et à avancer sans confusion.
           </p>
+          
+          <div class="pricing-badge">
+            📋 Questionnaire gratuit • Dossier personnalisé : 9,90 € TTC
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn-primary btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
@@ -795,20 +812,20 @@
         <div class="steps">
           <article class="step">
             <div class="step-number">1</div>
-            <h3>Choisissez votre besoin</h3>
-            <p>Identifiez la catégorie qui correspond à votre situation et choisissez la démarche à traiter.</p>
+            <h3>Répondez aux questions</h3>
+            <p>Décrivez votre situation via notre questionnaire gratuit pour comprendre votre démarche.</p>
           </article>
 
           <article class="step">
             <div class="step-number">2</div>
-            <h3>Suivez les étapes</h3>
-            <p>Accédez aux informations utiles, aux documents nécessaires et au bon ordre d’action à suivre.</p>
+            <h3>Recevez votre dossier</h3>
+            <p>Après le paiement (9,90 € TTC), obtenez votre dossier personnalisé par email avec plan d'action et PDF.</p>
           </article>
 
           <article class="step">
             <div class="step-number">3</div>
             <h3>Avancez sereinement</h3>
-            <p>Restez organisé, gagnez du temps et passez à l’étape suivante avec plus de confiance.</p>
+            <p>Restez organisé, gagnez du temps et passez à l'étape suivante avec plus de confiance.</p>
           </article>
         </div>
       </div>
@@ -818,14 +835,14 @@
       <div class="container why-grid">
         <div class="why-copy">
           <h3>Pourquoi utiliser DossierDémarche ?</h3>
-          <p>Parce que les démarches administratives peuvent vite devenir lourdes, confuses et chronophages. DossierDémarche simplifie ce parcours pour que vous puissiez vous concentrer sur l’essentiel.</p>
-          <p>Vous avez besoin d’un cadre clair, d’informations utiles et d’une structure rassurante. C’est exactement ce que vous trouverez ici.</p>
+          <p>Parce que les démarches administratives peuvent vite devenir lourdes, confuses et chronophages. DossierDémarche simplifie ce parcours pour que vous puissiez vous concentrer sur l'essentiel.</p>
+          <p>Vous avez besoin d'un cadre clair, d'informations utiles et d'une structure rassurante. C'est exactement ce que vous trouverez ici.</p>
 
           <ul class="check-list">
             <li>Un accès rapide aux démarches les plus courantes.</li>
             <li>Des informations présentées de manière claire et compréhensible.</li>
             <li>Une meilleure organisation pour avancer étape par étape.</li>
-            <li>Une expérience pensée pour être simple et rassurante.</li>
+            <li>Un dossier personnalisé complet pour votre situation.</li>
           </ul>
         </div>
 
@@ -847,7 +864,7 @@
 
           <div class="panel-box">
             <strong>Accessibilité</strong>
-            <span>Une expérience adaptée à tous types d’appareils et de situations.</span>
+            <span>Une expérience adaptée à tous types d'appareils et de situations.</span>
           </div>
         </div>
       </div>
@@ -861,11 +878,21 @@
         <div class="faq-wrap">
           <div class="faq-item open">
             <button class="faq-question" type="button">
-              <span>Qu’est-ce que DossierDémarche ?</span>
+              <span>Comment fonctionne le service ?</span>
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer" style="max-height: 200px;">
-              <p>DossierDémarche est un site vitrine pensé pour aider les particuliers à mieux organiser leurs démarches administratives et à trouver les bonnes informations au bon moment.</p>
+              <p>Vous commencez par répondre à quelques questions dans notre questionnaire gratuit. Selon vos réponses, vous pouvez accéder à une première orientation. Pour obtenir votre dossier personnalisé complet (avec analyse détaillée, plan d'action, dossier PDF et courrier personnalisé), vous payez 9,90 € TTC via Stripe sur la plateforme.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Le service est-il gratuit ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Le questionnaire et la première orientation sont gratuits. Le dossier personnalisé complet, comprenant l'analyse, le plan d'action, le dossier PDF et le courrier personnalisé, est proposé au tarif de 9,90 € TTC.</p>
             </div>
           </div>
 
@@ -881,11 +908,21 @@
 
           <div class="faq-item">
             <button class="faq-question" type="button">
-              <span>Le service est-il gratuit ?</span>
+              <span>Comment se faire payer ?</span>
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer">
-              <p>Oui, DossierDémarche est conçu comme une ressource simple et accessible, pensée pour aider gratuitement les utilisateurs à mieux comprendre et organiser leurs démarches.</p>
+              <p>Le paiement du dossier personnalisé (9,90 € TTC) se fait via Stripe directement sur le questionnaire DossierDémarche. Vous recevrez votre dossier complet par email après validation du paiement.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Qu'est-ce qui est inclus dans le dossier personnalisé ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Le dossier personnalisé (9,90 € TTC) comprend : une analyse de votre situation, un plan d'action détaillé, un dossier au format PDF et un courrier personnalisé envoyés par email.</p>
             </div>
           </div>
 
@@ -905,7 +942,7 @@
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer">
-              <p>Vous pouvez accéder directement au questionnaire via le bouton de lancement et choisir la démarche qui correspond à votre besoin.</p>
+              <p>Cliquez sur le bouton « Commencer mon dossier » pour accéder au questionnaire gratuit. Vous pourrez alors choisir votre démarche et recevoir une première orientation gratuitement, ou opter pour le dossier personnalisé complet moyennant 9,90 € TTC.</p>
             </div>
           </div>
         </div>
@@ -916,7 +953,7 @@
       <div class="container">
         <div class="cta-box">
           <h3>Prêt à avancer plus simplement ?</h3>
-          <p>Commencez votre dossier en quelques clics et trouvez rapidement la bonne démarche à suivre.</p>
+          <p>Commencez avec notre questionnaire gratuit et découvrez comment structurer votre dossier. Dossier personnalisé : 9,90 € TTC.</p>
           <a class="btn btn-light btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
         </div>
       </div>
