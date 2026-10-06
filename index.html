@@ -1,341 +1,963 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DossierDémarche - Aide à la préparation et à la structuration de vos démarches administratives. Logement, travail, argent, téléphone, automobile, administration, litiges.">
-    <meta name="keywords" content="démarches administratives, aide, logement, travail, argent, téléphone, automobile, litiges">
-    <meta name="author" content="DossierDémarche">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="DossierDémarche - Vos démarches. Votre dossier. Plus simplement.">
-    <meta property="og:description" content="Service d'aide à la préparation et à la structuration des démarches administratives.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dossierdemarche.fr">
-    <meta name="theme-color" content="#0066cc">
-    <title>DossierDémarche - Vos démarches. Votre dossier. Plus simplement.</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="canonical" href="https://dossierdemarche.fr">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DossierDémarche - Vos démarches. Votre dossier. Plus simplement." />
+  <meta name="theme-color" content="#0f172a" />
+  <title>DossierDémarche - Vos démarches. Votre dossier. Plus simplement.</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --surface: #ffffff;
+      --surface-alt: #edf3ff;
+      --ink: #111827;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --primary: #0f4c81;
+      --primary-strong: #0a3d67;
+      --primary-soft: #eaf3ff;
+      --accent: #f5b942;
+      --success: #1f9d7a;
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+
+    .section-subtitle {
+      margin: 0 auto 32px;
+      max-width: 760px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      box-shadow: 0 16px 28px rgba(15, 76, 129, 0.22);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 20px 30px rgba(15, 76, 129, 0.28);
+    }
+
+    .btn-ghost {
+      background: #fff;
+      color: var(--primary);
+      border: 1px solid rgba(15, 76, 129, 0.2);
+    }
+
+    .btn-lg {
+      padding: 18px 28px;
+      font-size: 1rem;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(246, 248, 251, 0.88);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 1.25rem;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary-soft), #dfeefc);
+      color: var(--primary);
+      font-size: 1.1rem;
+      box-shadow: inset 0 0 0 1px rgba(15, 76, 129, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      margin-left: 12px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 88px 0 72px;
+      background:
+        radial-gradient(circle at top left, rgba(15, 76, 129, 0.08), transparent 30%),
+        linear-gradient(180deg, #f9fbff 0%, var(--bg) 100%);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-soft);
+      border: 1px solid rgba(15, 76, 129, 0.08);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.97;
+      letter-spacing: -0.055em;
+      color: var(--ink);
+    }
+
+    .hero-title .em {
+      display: block;
+      color: var(--primary);
+    }
+
+    .hero-copy {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .hero-panel {
+      position: relative;
+      background: linear-gradient(180deg, #ffffff 0%, #f3f8ff 100%);
+      border: 1px solid rgba(15, 76, 129, 0.08);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mini-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    .mini-card + .mini-card {
+      margin-top: 18px;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .mini-badge {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(31, 157, 122, 0.1);
+      color: var(--success);
+      border: 1px solid rgba(31, 157, 122, 0.14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+      display: inline-block;
+    }
+
+    .categories {
+      padding: 84px 0 40px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .category-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 22px 24px;
+      box-shadow: 0 8px 25px rgba(15, 23, 42, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      min-height: 220px;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(15, 76, 129, 0.2);
+      box-shadow: 0 18px 28px rgba(15, 76, 129, 0.08);
+    }
+
+    .category-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: var(--surface-alt);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .category-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .category-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+      max-width: 240px;
+    }
+
+    .category-card .card-action {
+      margin-top: 18px;
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid rgba(15, 76, 129, 0.08);
+      font-weight: 700;
+    }
+
+    .how {
+      padding: 80px 0 20px;
+      background: #edf4ff;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px 24px;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.04);
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-strong));
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .why {
+      padding: 82px 0 40px;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .why-copy h3 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 3vw, 2.5rem);
+      letter-spacing: -0.04em;
+      line-height: 1.15;
+    }
+
+    .why-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 22px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      display: inline-flex;
+      width: 26px;
+      height: 26px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(15, 76, 129, 0.10);
+      color: var(--primary);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .why-panel {
+      background: linear-gradient(180deg, #ffffff, #f4f8ff);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .panel-box strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .panel-box span {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .faq {
+      padding: 84px 0 40px;
+    }
+
+    .faq-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .faq-toggle {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+      background: #fbfdff;
+    }
+
+    .faq-answer p {
+      margin: 0;
+      padding: 0 22px 20px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .cta-final {
+      padding: 80px 0 100px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+      border-radius: 28px;
+      padding: clamp(28px, 5vw, 54px);
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(10, 61, 103, 0.24);
+    }
+
+    .cta-box h3 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.05em;
+    }
+
+    .cta-box p {
+      margin: 0 auto 22px;
+      max-width: 640px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.08rem;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--primary);
+      padding: 18px 28px;
+      border-radius: 12px;
+      font-weight: 800;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    .footer {
+      background: #111827;
+      padding: 30px 0 42px;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      color: #fff;
+      font-size: 1.1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .footer a {
+      color: #cfe2ff;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .why-grid,
+      .category-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .hero-panel {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .topbar-inner {
+        min-height: 72px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.3rem, 13vw, 3.2rem);
+      }
+
+      .btn-lg {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .category-card {
+        min-height: 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a href="#" class="logo">
-                    <span class="logo-icon">📋</span>
-                    <span class="logo-text">DossierDémarche</span>
-                </a>
-            </div>
-            <ul class="navbar-menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#categories">Catégories</a></li>
-                <li><a href="#fonctionnement">Fonctionnement</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <button class="cta-nav" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Commencer</button>
-        </div>
-    </nav>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="logo" aria-label="DossierDémarche accueil">
+        <span class="logo-mark">📋</span>
+        <span>DossierDémarche</span>
+      </a>
 
-    <!-- Hero Section -->
-    <section class="hero" id="accueil">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Vos démarches.</h1>
-                <h1 class="hero-title">Votre dossier.</h1>
-                <h1 class="hero-title highlight">Plus simplement.</h1>
-                <p class="hero-subtitle">Préparez et structurez vos démarches administratives avec l'aide de DossierDémarche</p>
-                <button class="btn btn-primary btn-lg" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">
-                    Commencer mon dossier
-                </button>
-            </div>
-            <div class="hero-illustration">
-                <div class="illustration-box">📊</div>
-            </div>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#categories">Catégories</a>
+        <a href="#fonctionnement">Comment ça marche</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" class="nav-btn">Commencer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="eyebrow">Guide pratique</div>
+          <h1 class="hero-title">
+            Vos démarches.
+            <span class="em">Votre dossier.</span>
+            <span>Plus simplement.</span>
+          </h1>
+          <p class="hero-copy">
+            DossierDémarche vous aide à organiser vos démarches administratives, à comprendre les étapes à suivre et à avancer sans confusion.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
+            <a class="btn btn-ghost btn-lg" href="#categories">Explorer les catégories</a>
+          </div>
         </div>
+
+        <div class="hero-panel" aria-label="Présentation de l'offre">
+          <div class="mini-badge"><span class="dot"></span> Simple & rassurant</div>
+
+          <div class="mini-card">
+            <strong>Logement</strong>
+            <span>Location, bail, habitat, documents utiles</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>Travail</strong>
+            <span>Emploi, contrat, situation professionnelle</span>
+          </div>
+
+          <div class="mini-card">
+            <strong>Administration</strong>
+            <span>Pièces, procédures, parcours guidés</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Catégories Section -->
     <section class="categories" id="categories">
-        <div class="container">
-            <h2>Explorez nos catégories</h2>
-            <p class="section-subtitle">Trouvez l'aide adaptée à votre situation</p>
-            
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-icon">🏠</div>
-                    <h3>Logement</h3>
-                    <p>Aide pour vos démarches liées au logement, location, propriété et habitation.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Nos catégories les plus utiles</h2>
+        <p class="section-subtitle">Trouvez rapidement la catégorie qui correspond à votre situation.</p>
 
-                <div class="category-card">
-                    <div class="category-icon">💼</div>
-                    <h3>Travail</h3>
-                    <p>Assistance pour vos démarches professionnelles et questions d'emploi.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+        <div class="category-grid">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">🏠</div>
+            <h3>Logement</h3>
+            <p>Location, bail, habitat, démarches liées au logement.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
 
-                <div class="category-card">
-                    <div class="category-icon">💰</div>
-                    <h3>Argent & Factures</h3>
-                    <p>Gestion de vos finances, factures et questions budgétaires.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">💼</div>
+            <h3>Travail</h3>
+            <p>Emploi, contrat, droits et démarches professionnelles.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
 
-                <div class="category-card">
-                    <div class="category-icon">📱</div>
-                    <h3>Téléphone & Internet</h3>
-                    <p>Aide pour vos démarches de communication et connectivité.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">💰</div>
+            <h3>Argent &amp; factures</h3>
+            <p>Budget, factures, paiements, gestion administrative.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
 
-                <div class="category-card">
-                    <div class="category-icon">🚗</div>
-                    <h3>Automobile</h3>
-                    <p>Assistance pour vos démarches automobiles et permis de conduire.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">📱</div>
+            <h3>Téléphone &amp; Internet</h3>
+            <p>Abonnement, ligne, connexion, démarches de télécom.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
 
-                <div class="category-card">
-                    <div class="category-icon">🏛️</div>
-                    <h3>Administration</h3>
-                    <p>Aide générale pour vos démarches administratives et papiers officiels.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">🚗</div>
+            <h3>Automobile</h3>
+            <p>Permis, véhicule, immatriculation, documents utiles.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
 
-                <div class="category-card">
-                    <div class="category-icon">⚖️</div>
-                    <h3>Litiges</h3>
-                    <p>Assistance pour la résolution de conflits et contentieux.</p>
-                    <button class="btn btn-outline" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">Démarrer</button>
-                </div>
-            </div>
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+            <div class="category-icon">📋</div>
+            <h3>Administration</h3>
+            <p>Pièces, formalités et procédures administratives.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
+
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" style="grid-column: span 1;">
+            <div class="category-icon">⚖️</div>
+            <h3>Litiges</h3>
+            <p>Conflits, recours, suivi de démarches contentieuses.</p>
+            <div class="card-action">Démarrer</div>
+          </a>
         </div>
+      </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works" id="fonctionnement">
-        <div class="container">
-            <h2>Comment ça marche ?</h2>
-            <p class="section-subtitle">3 étapes simples pour structurer votre dossier</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Décrivez votre situation</h3>
-                        <p>Répondez à quelques questions simples pour que nous comprenions votre contexte et vos besoins spécifiques.</p>
-                    </div>
-                </div>
+    <section class="how" id="fonctionnement">
+      <div class="container">
+        <h2 class="section-title">Comment ça marche</h2>
+        <p class="section-subtitle">Un parcours simple, clair et progressif pour avancer sans stress.</p>
 
-                <div class="step-arrow">→</div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>Choisissez votre besoin</h3>
+            <p>Identifiez la catégorie qui correspond à votre situation et choisissez la démarche à traiter.</p>
+          </article>
 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Recevez un dossier structuré</h3>
-                        <p>Nous générons un dossier complet et organisé avec tous les documents et informations nécessaires pour votre démarche.</p>
-                    </div>
-                </div>
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>Suivez les étapes</h3>
+            <p>Accédez aux informations utiles, aux documents nécessaires et au bon ordre d’action à suivre.</p>
+          </article>
 
-                <div class="step-arrow">→</div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Avancez sereinement</h3>
-                        <p>Utilisez votre dossier préparé pour avancer dans vos démarches avec confiance et clarté.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cta-section">
-                <p>Prêt à commencer ?</p>
-                <button class="btn btn-primary btn-lg" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">
-                    Commencer mon dossier maintenant
-                </button>
-            </div>
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>Avancez sereinement</h3>
+            <p>Restez organisé, gagnez du temps et passez à l’étape suivante avec plus de confiance.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2>Pourquoi choisir DossierDémarche ?</h2>
-            
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">✓</div>
-                    <h3>Simple et intuitif</h3>
-                    <p>Interface claire et facile à utiliser pour tous</p>
-                </div>
+    <section class="why">
+      <div class="container why-grid">
+        <div class="why-copy">
+          <h3>Pourquoi utiliser DossierDémarche ?</h3>
+          <p>Parce que les démarches administratives peuvent vite devenir lourdes, confuses et chronophages. DossierDémarche simplifie ce parcours pour que vous puissiez vous concentrer sur l’essentiel.</p>
+          <p>Vous avez besoin d’un cadre clair, d’informations utiles et d’une structure rassurante. C’est exactement ce que vous trouverez ici.</p>
 
-                <div class="feature">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Rapide</h3>
-                    <p>Préparez votre dossier en quelques minutes</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Sécurisé</h3>
-                    <p>Vos données sont protégées et confidentielles</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">📱</div>
-                    <h3>Accessible partout</h3>
-                    <p>Utilisable sur mobile, tablette et ordinateur</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Personnalisé</h3>
-                    <p>Un dossier adapté à votre situation unique</p>
-                </div>
-
-                <div class="feature">
-                    <div class="feature-icon">📋</div>
-                    <h3>Complet</h3>
-                    <p>Tous les documents et informations en un seul endroit</p>
-                </div>
-            </div>
+          <ul class="check-list">
+            <li>Un accès rapide aux démarches les plus courantes.</li>
+            <li>Des informations présentées de manière claire et compréhensible.</li>
+            <li>Une meilleure organisation pour avancer étape par étape.</li>
+            <li>Une expérience pensée pour être simple et rassurante.</li>
+          </ul>
         </div>
+
+        <div class="why-panel" aria-label="Avantages du site">
+          <div class="panel-box">
+            <strong>Organisation</strong>
+            <span>Classer votre besoin selon la bonne catégorie, sans perdre de temps.</span>
+          </div>
+
+          <div class="panel-box">
+            <strong>Clarté</strong>
+            <span>Des informations présentées dans un ordre logique et facile à suivre.</span>
+          </div>
+
+          <div class="panel-box">
+            <strong>Rassurance</strong>
+            <span>Un accompagnement simple, utile et pensé pour éviter la confusion.</span>
+          </div>
+
+          <div class="panel-box">
+            <strong>Accessibilité</strong>
+            <span>Une expérience adaptée à tous types d’appareils et de situations.</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq" id="faq">
-        <div class="container">
-            <h2>Questions fréquemment posées</h2>
-            
-            <div class="faq-items">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Qu'est-ce que DossierDémarche ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>DossierDémarche est un service d'aide à la préparation et à la structuration de vos démarches administratives. Nous vous guidons pour organiser votre dossier et rassembler tous les documents nécessaires de manière simple et efficace.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">FAQ</h2>
+        <p class="section-subtitle">Les réponses aux questions les plus fréquentes.</p>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Comment fonctionne le service ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>C'est simple : vous répondez à quelques questions pour décrire votre situation, notre système génère un dossier complet et structuré adapté à votre cas, et vous pouvez ensuite l'utiliser pour avancer dans vos démarches avec confiance.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Quel est le coût du service ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Nous vous proposons une première consultation gratuite. Pour les services complémentaires, consultez directement notre plateforme ou contactez-nous pour connaître les tarifs adaptés à votre besoin.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Mes données sont-elles sécurisées ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, nous prenons la sécurité de vos données très au sérieux. Toutes vos informations sont traitées de manière confidentielle et protégées par les standards de sécurité les plus élevés.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Puis-je accéder au service depuis mon téléphone ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Absolument ! Notre plateforme est entièrement responsive et optimisée pour tous les appareils : smartphones, tablettes et ordinateurs. Vous pouvez utiliser le service de n'importe où, à tout moment.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Combien de temps faut-il pour préparer mon dossier ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>En général, quelques minutes suffisent ! Vous répondez à quelques questions ciblées et notre système génère immédiatement votre dossier complet et structuré. Le temps total dépend de la complexité de votre situation.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Quelles catégories de démarches couvrez-vous ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Nous couvrons sept catégories principales : Logement, Travail, Argent & Factures, Téléphone & Internet, Automobile, Administration, et Litiges. Chaque catégorie offre une assistance adaptée à votre type de démarche.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Puis-je modifier mon dossier après sa création ?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, vous pouvez ajuster et personnaliser votre dossier selon vos besoins. Notre plateforme vous permet d'ajouter, modifier ou supprimer des éléments facilement pour garder votre dossier à jour.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <h2>Prêt à simplifier vos démarches ?</h2>
-            <p>Rejoignez des milliers d'utilisateurs qui ont déjà structuré leurs dossiers avec DossierDémarche</p>
-            <button class="btn btn-primary btn-lg" onclick="window.open('https://ftri5xgomy.zite.so', '_blank')">
-                Commencer mon dossier maintenant
+        <div class="faq-wrap">
+          <div class="faq-item open">
+            <button class="faq-question" type="button">
+              <span>Qu’est-ce que DossierDémarche ?</span>
+              <span class="faq-toggle">+</span>
             </button>
+            <div class="faq-answer" style="max-height: 200px;">
+              <p>DossierDémarche est un site vitrine pensé pour aider les particuliers à mieux organiser leurs démarches administratives et à trouver les bonnes informations au bon moment.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Comment retrouver la bonne démarche ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Il suffit de choisir la catégorie qui correspond à votre situation. Chaque section est pensée pour vous orienter rapidement vers la bonne démarche.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Le service est-il gratuit ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Oui, DossierDémarche est conçu comme une ressource simple et accessible, pensée pour aider gratuitement les utilisateurs à mieux comprendre et organiser leurs démarches.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Puis-je utiliser le site sur mobile ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Oui. Le site est pensé pour offrir une bonne expérience sur mobile, tablette et ordinateur, avec une lecture fluide et un accès rapide aux informations.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button">
+              <span>Comment puis-je commencer ?</span>
+              <span class="faq-toggle">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Vous pouvez accéder directement au questionnaire via le bouton de lancement et choisir la démarche qui correspond à votre besoin.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>DossierDémarche</h4>
-                    <p>Aide à la préparation et à la structuration des démarches administratives.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#categories">Catégories</a></li>
-                        <li><a href="#fonctionnement">Fonctionnement</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Catégories</h4>
-                    <ul>
-                        <li><a href="#categories">Logement</a></li>
-                        <li><a href="#categories">Travail</a></li>
-                        <li><a href="#categories">Argent & Factures</a></li>
-                        <li><a href="#categories">Automobile</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DossierDémarche. Tous droits réservés.</p>
-            </div>
+    <section class="cta-final">
+      <div class="container">
+        <div class="cta-box">
+          <h3>Prêt à avancer plus simplement ?</h3>
+          <p>Commencez votre dossier en quelques clics et trouvez rapidement la bonne démarche à suivre.</p>
+          <a class="btn btn-light btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="assets/js/script.js"></script>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">DossierDémarche</div>
+      <div>Vos démarches. Votre dossier. Plus simplement.</div>
+      <div><a href="mailto:contact@dossierdemarche.fr">contact@dossierdemarche.fr</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach((item) => {
+      const btn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        faqItems.forEach((other) => {
+          other.classList.remove('open');
+          const otherAnswer = other.querySelector('.faq-answer');
+          otherAnswer.style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const defaultOpen = document.querySelector('.faq-item.open .faq-answer');
+    if (defaultOpen) {
+      defaultOpen.style.maxHeight = defaultOpen.scrollHeight + 'px';
+    }
+  </script>
 </body>
 </html>
