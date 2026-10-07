@@ -6,6 +6,28 @@
   <meta name="description" content="DossierDémarche - Vos démarches. Votre dossier. Plus simplement." />
   <meta name="theme-color" content="#0f172a" />
   <title>DossierDémarche - Vos démarches. Votre dossier. Plus simplement.</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XZY5KZ77QY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied'
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-XZY5KZ77QY', {
+      anonymize_ip: true,
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9546821458433422"
+    crossorigin="anonymous"></script>
+
   <style>
     :root {
       --bg: #f6f8fb;
@@ -607,8 +629,69 @@
       letter-spacing: -0.04em;
     }
 
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     .footer a {
       color: #cfe2ff;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: rgba(17, 24, 39, 0.96);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 20px 38px rgba(15, 23, 42, 0.24);
+    }
+
+    .cookie-banner.hidden {
+      display: none;
+    }
+
+    .cookie-text {
+      max-width: 720px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.96rem;
+    }
+
+    .cookie-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cookie-btn.primary {
+      background: #fff;
+      color: var(--primary);
+    }
+
+    .cookie-btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .sr-only {
@@ -668,6 +751,11 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .cookie-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -683,7 +771,7 @@
         <a href="#categories">Catégories</a>
         <a href="#fonctionnement">Comment ça marche</a>
         <a href="#faq">FAQ</a>
-        <a href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" class="nav-btn">Commencer</a>
+        <a href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" class="nav-btn" data-ga-event="questionnaire_start">Commencer</a>
       </nav>
     </div>
   </header>
@@ -703,13 +791,13 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
-            <a class="btn btn-ghost btn-lg" href="#categories">Explorer les catégories</a>
+            <a class="btn btn-primary btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_start">Commencer mon dossier</a>
+            <a class="btn btn-ghost btn-lg" href="#categories" data-ga-event="orientation_viewed">Explorer les catégories</a>
           </div>
         </div>
 
         <div class="hero-panel" aria-label="Présentation de l'offre">
-          <div class="mini-badge"><span class="dot"></span> Simple & rassurant</div>
+          <div class="mini-badge"><span class="dot"></span> Simple &amp; rassurant</div>
 
           <div class="mini-card">
             <strong>Logement</strong>
@@ -735,49 +823,49 @@
         <p class="section-subtitle">Trouvez rapidement la catégorie qui correspond à votre situation.</p>
 
         <div class="category-grid">
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">🏠</div>
             <h3>Logement</h3>
             <p>Location, bail, habitat, démarches liées au logement.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">💼</div>
             <h3>Travail</h3>
             <p>Emploi, contrat, droits et démarches professionnelles.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">💰</div>
             <h3>Argent &amp; factures</h3>
             <p>Budget, factures, paiements, gestion administrative.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">📱</div>
             <h3>Téléphone &amp; Internet</h3>
             <p>Abonnement, ligne, connexion, démarches de télécom.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">🚗</div>
             <h3>Automobile</h3>
             <p>Permis, véhicule, immatriculation, documents utiles.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">📋</div>
             <h3>Administration</h3>
             <p>Pièces, formalités et procédures administratives.</p>
             <div class="card-action">Démarrer</div>
           </a>
 
-          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" style="grid-column: span 1;">
+          <a class="category-card" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" style="grid-column: span 1;" data-ga-event="questionnaire_category_selected">
             <div class="category-icon">⚖️</div>
             <h3>Litiges</h3>
             <p>Conflits, recours, suivi de démarches contentieuses.</p>
@@ -818,7 +906,7 @@
       <div class="container why-grid">
         <div class="why-copy">
           <h3>Pourquoi utiliser DossierDémarche ?</h3>
-          <p>Parce que les démarches administratives peuvent vite devenir lourdes, confuses et chronophages. DossierDémarche simplifie ce parcours pour que vous puissiez vous concentrer sur l’essentiel.</p>
+          <p>Parce que les démarches administratives peuvent vite devenir lourdes, confuses et chronophages. DossierDémarche simplifie ce parcours pour que vous puissiez vous concentrer sur l'essentiel.</p>
           <p>Vous avez besoin d’un cadre clair, d’informations utiles et d’une structure rassurante. C’est exactement ce que vous trouverez ici.</p>
 
           <ul class="check-list">
@@ -865,7 +953,7 @@
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer" style="max-height: 220px;">
-              <p>Vous commencez par répondre à quelques questions dans notre questionnaire gratuit. Selon vos réponses, vous pouvez accéder à une première orientation. Pour obtenir votre dossier personnalisé complet (analyse, plan d’action, dossier PDF et courrier personnalisé), vous passez par le paiement sur le questionnaire.</p>
+              <p>Vous commencez par répondre à quelques questions dans notre questionnaire gratuit. Selon vos réponses, vous pouvez accéder à une première orientation. Pour obtenir votre dossier personnalisé complet, vous pouvez ensuite valider une offre Premium.</p>
             </div>
           </div>
 
@@ -875,7 +963,7 @@
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer">
-              <p>Le questionnaire et la première orientation sont gratuits. Le dossier personnalisé complet, comprenant l’analyse, le plan d’action, le dossier PDF et le courrier personnalisé, est proposé au tarif de 9,90 € TTC.</p>
+              <p>Le questionnaire et la première orientation sont gratuits. Le dossier personnalisé complet, comprenant l’analyse, le plan d’action, le dossier PDF et le courrier personnalisé, est proposé à un tarif spécifique.</p>
             </div>
           </div>
 
@@ -925,7 +1013,7 @@
               <span class="faq-toggle">+</span>
             </button>
             <div class="faq-answer">
-              <p>Cliquez sur le bouton « Commencer mon dossier » pour accéder au questionnaire gratuit. Vous pourrez alors choisir votre démarche et recevoir une première orientation gratuite, puis choisir le dossier personnalisé si vous le souhaitez.</p>
+              <p>Cliquez sur le bouton « Commencer mon dossier » pour accéder au questionnaire gratuit. Vous pourrez alors choisir votre démarche et recevoir une première orientation gratuite.</p>
             </div>
           </div>
         </div>
@@ -937,7 +1025,7 @@
         <div class="cta-box">
           <h3>Prêt à avancer plus simplement ?</h3>
           <p>Commencez avec notre questionnaire gratuit et découvrez comment structurer votre dossier.</p>
-          <a class="btn btn-light btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer">Commencer mon dossier</a>
+          <a class="btn btn-light btn-lg" href="https://ftri5xgomy.zite.so" target="_blank" rel="noreferrer" data-ga-event="questionnaire_start">Commencer mon dossier</a>
         </div>
       </div>
     </section>
@@ -947,11 +1035,78 @@
     <div class="container footer-inner">
       <div class="footer-brand">DossierDémarche</div>
       <div>Vos démarches. Votre dossier. Plus simplement.</div>
-      <div><a href="mailto:contact@dossierdemarche.fr">contact@dossierdemarche.fr</a></div>
+      <div class="footer-links">
+        <a href="/mentions-legales.html">Mentions légales</a>
+        <a href="/politique-confidentialite.html">Politique de confidentialité</a>
+        <a href="/gestion-cookies.html">Gestion des cookies</a>
+        <a href="mailto:contact@dossierdemarche.fr">Contact</a>
+      </div>
     </div>
   </footer>
 
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-text">
+      Nous utilisons des cookies essentiels, de mesure d'audience et publicitaires avec votre consentement. Vous pouvez accepter, refuser ou modifier vos préférences à tout moment.
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn secondary" id="decline-cookies">Refuser</button>
+      <button type="button" class="cookie-btn primary" id="accept-cookies">Accepter</button>
+    </div>
+  </div>
+
   <script>
+    const consentState = {
+      ad_storage: false,
+      ad_user_data: false,
+      ad_personalization: false,
+      analytics_storage: false
+    };
+
+    function applyConsent(nextState) {
+      Object.assign(consentState, nextState);
+
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          ad_storage: nextState.ad_storage ? 'granted' : 'denied',
+          ad_user_data: nextState.ad_user_data ? 'granted' : 'denied',
+          ad_personalization: nextState.ad_personalization ? 'granted' : 'denied',
+          analytics_storage: nextState.analytics_storage ? 'granted' : 'denied'
+        });
+      }
+
+      if (nextState.analytics_storage || nextState.ad_storage || nextState.ad_user_data || nextState.ad_personalization) {
+        if (typeof gtag === 'function') {
+          gtag('event', 'page_view', { non_interaction: true });
+        }
+      }
+      localStorage.setItem('dd_consent', JSON.stringify(nextState));
+      document.getElementById('cookie-banner').classList.add('hidden');
+    }
+
+    document.getElementById('accept-cookies').addEventListener('click', function () {
+      applyConsent({
+        ad_storage: true,
+        ad_user_data: true,
+        ad_personalization: true,
+        analytics_storage: true
+      });
+    });
+
+    document.getElementById('decline-cookies').addEventListener('click', function () {
+      applyConsent({
+        ad_storage: false,
+        ad_user_data: false,
+        ad_personalization: false,
+        analytics_storage: false
+      });
+    });
+
+    const savedConsent = localStorage.getItem('dd_consent');
+    if (savedConsent) {
+      const parsedConsent = JSON.parse(savedConsent);
+      applyConsent(parsedConsent);
+    }
+
     const faqItems = document.querySelectorAll('.faq-item');
 
     faqItems.forEach((item) => {
@@ -977,6 +1132,19 @@
     const defaultOpen = document.querySelector('.faq-item.open .faq-answer');
     if (defaultOpen) {
       defaultOpen.style.maxHeight = defaultOpen.scrollHeight + 'px';
+    }
+
+    document.querySelectorAll('[data-ga-event]').forEach((element) => {
+      element.addEventListener('click', function () {
+        const eventName = this.getAttribute('data-ga-event');
+        if (eventName && typeof gtag === 'function') {
+          gtag('event', eventName, { non_interaction: true });
+        }
+      });
+    });
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', { non_interaction: true });
     }
   </script>
 </body>
